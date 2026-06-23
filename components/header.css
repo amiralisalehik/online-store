@@ -1,0 +1,58 @@
+header {
+  background: linear-gradient(to right, #3b83f6, #06b6d4);
+  color: white;
+  min-height: 30px;
+  padding: 10px 40px 10px 40px;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.close {
+  position: fixed;
+  top: 30px;
+  left: 40px;
+}
+
+.nav.active {
+  display: block;
+}
+@media screen and (max-width: 768px) {
+  .nav {
+    display: none;
+    position: fixed;
+    gap: 70px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 80px 50px;
+    background: linear-gradient(to right, #3b83f6, #06b6d4);
+    z-index: 100;
+  }
+  .nav ul{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    display: block;
+    gap: 20px;
+    position: static;
+    padding: 0;
+  }
+
+  header button {
+    display: none;
+  }
+
+  header ul {
+    display: flex;
+    gap: 15px;
+  }
+}
