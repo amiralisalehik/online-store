@@ -1,4 +1,5 @@
 "use client";
+import { FiMenu , FiX } from "react-icons/fi";
 import Link from "next/link";
 import "./header.css";
 import { useContext, useState } from "react";
@@ -26,7 +27,7 @@ export default function Header() {
           handleClickMenu();
         }}
       >
-        menu
+        <FiMenu size={20}> </FiMenu>
       </button>
       <nav className={`nav  ${isActive ? "active" : ""}`}>
         <button
@@ -35,7 +36,7 @@ export default function Header() {
             handleClickMenu();
           }}
         >
-          close
+          <FiX size={20}/>
         </button>
         <ul >
           {urls.map((url) => (

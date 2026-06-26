@@ -3,6 +3,7 @@ import { CartContext } from "@/context/CartContext";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext, useState } from "react";
+import { FiTrash2 } from "react-icons/fi";
 
 export default function Cart() {
   const { cart, clearCart, updateQuantity, getTotal, removeFromCart } =
@@ -107,10 +108,10 @@ export default function Cart() {
                   </td>
                   <td className=" text-center">
                     <button onClick={() => removeFromCart(product._id)}>
-                      trash
+                      <FiTrash2 size={20}></FiTrash2>
                     </button>
                   </td>
-                  <td className="py-2  pr-1  flex items-center justify-between">
+                  <td className="py-2  pr-3  flex items-center justify-between">
                     <p>{product.title}</p>
                     <Image
                       className="rounded-md h-14 object-cover"
