@@ -33,7 +33,7 @@ export default function Cart() {
     };
     console.log("cart being sent:", JSON.stringify(cart, null, 2));
     try {
-      const res = await fetch("/api/orders", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders`, {
         method: "POST",
         headers: { "content-Type": "application/json" },
         body: JSON.stringify(orderData),
