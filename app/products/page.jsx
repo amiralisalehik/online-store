@@ -7,8 +7,8 @@ export default async function Products({ searchParams }) {
   
     return (
     <>
-      <h1>shop</h1>
-      <h1 className="text-lg font-bold text-center ">
+     
+      <h1 className="mt-5 text-lg font-bold text-center ">
                 {category ? `دسته بندی : ${category}` : "فروشگاه "}
       </h1>
       <LatestProducts category={category}></LatestProducts>

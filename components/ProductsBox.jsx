@@ -29,7 +29,7 @@ export default function ProductsBox({ product }) {
         <div className="flex items-center justify-between gap-2">
           <button
             onClick={()=>{addToCart(product)}}
-            className="bg-blue-500 hover:bg-blue-600 text-white text-[10px] p-2  rounded-lg transition-colors whitespace-nowrap"
+            className= "cursor-pointer bg-blue-500 hover:bg-blue-600 text-white text-[10px] p-2  rounded-lg transition-colors whitespace-nowrap"
           >
             {" "}
             افزودن به سبد خرید

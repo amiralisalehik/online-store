@@ -7,7 +7,7 @@ const OrderSchema = new mongoose.Schema({
     phone: String,
     city: String,
     address: String,
-    postalCode: Number,
+    postalCode: String,
   },
   cart: [
     {

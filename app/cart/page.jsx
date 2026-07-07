@@ -20,12 +20,68 @@ export default function Cart() {
     postalCode: "",
   });
 
+  const [errors, setErrors] = useState({});
+  // { name: "" , email: "" } errors for form
+
+  function validate() {
+    let newErrors = {};
+    let isValid = true;
+
+    if (!userInfo.name.trim()) {
+      newErrors.name = "نام الزامی است.";
+      isValid = false;
+    } else if (userInfo.name.trim().length < 3) {
+      newErrors.name = "نام باید بیشتر از 3 کاراکتر باشد";
+      isValid = false;
+    }
+    const phoneRejex = /^09[0-9]{9}$/;
+    if (!userInfo.phone) {
+      newErrors.phone = "شماره تلفن الزامی است";
+      isValid = false;
+    } else if (!phoneRejex.test(userInfo.phone)) {
+      newErrors.phone = "شماره موبایل معتبر نیست";
+      isValid = false;
+    }
+
+    if (userInfo.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userInfo.email)) {
+      newErrors.email = "فرمت ایمیل اشتباه است";
+      isValid = false;
+    }
+    if (!userInfo.postalCode) {
+      newErrors.postalCode = "کد پستی الزامی است";
+      isValid = false;
+    } else if (!/^[0-9]{10}$/.test(userInfo.postalCode)) {
+      newErrors.postalCode = "کد پستی معتبر نیست";
+      isValid = false;
+    }
+    if (!userInfo.city) {
+      newErrors.city = "وارد کردن شهر الزامی است";
+      isValid = false;
+    }
+    if (!userInfo.address) {
+      newErrors.address = "وارد کردن آدرس الزامی است";
+      isValid = false;
+    }
+
+    if (!isValid) {
+      setErrors(newErrors);
+    }
+    return isValid;
+  }
+
   function handleChange(event) {
     setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
+    if (errors[event.target.name]) {
+      setErrors({ ...errors, [event.target.name]: "" });
+    }
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (!validate()) {
+      return;
+    }
 
     const orderData = {
       user: userInfo,
@@ -152,59 +208,73 @@ export default function Cart() {
               name="name"
               value={userInfo.name}
               onChange={handleChange}
-              className="w-full mb-3 p-2 border border-gray-100 rounded-md outline-none bg-gray-50"
+              className={`w-full mb-2 p-2 border ${errors.name ? "border-red-700" : " border-gray-100 "} rounded-md outline-none bg-gray-50`}
               type="text"
               placeholder=" نام و نام خانوادگی"
-              required
             />
+
+            {errors.name && <p className="text-red-700 mb-2">{errors.name}</p>}
             <label className="block mb-1 text-gray-600 ">ایمیل</label>
             <input
               name="email"
               value={userInfo.email}
               onChange={handleChange}
-              className="w-full text-left mb-3 p-2 border border-gray-100 rounded-md outline-none bg-gray-50"
-              type="email"
+              className={`w-full mb-2 p-2 border ${errors.email ? "border-red-700" : " border-gray-100 "} rounded-md outline-none bg-gray-50`}
               placeholder="example@email.com"
             />
+            {errors.email && (
+              <p className="text-red-700 mb-2">{errors.email}</p>
+            )}
 
             <label className="block mb-1 text-gray-600 ">تلفن </label>
             <input
               name="phone"
               value={userInfo.phone}
               onChange={handleChange}
-              className="w-full mb-3 p-2 border border-gray-100 rounded-md outline-none bg-gray-50"
+              className={`w-full mb-2 p-2 border ${errors.phone ? "border-red-700" : " border-gray-100 "} rounded-md outline-none bg-gray-50`}
               type="tel"
               placeholder="09123456789"
-              required
             />
+            {errors.phone && (
+              <p className="text-red-700 mb-2">{errors.phone}</p>
+            )}
 
             <label className="block mb-1 text-gray-600 ">شهر</label>
             <input
               name="city"
               value={userInfo.city}
               onChange={handleChange}
-              className="w-full mb-3 p-2 border border-gray-100 rounded-md outline-none bg-gray-50"
+              className={`w-full mb-2 p-2 border ${errors.city ? "border-red-700" : " border-gray-100 "} rounded-md outline-none bg-gray-50`}
               type="text"
               placeholder=" شهر"
             />
+            {errors.city && <p className="text-red-700 mb-2">{errors.city}</p>}
+
             <label className="block mb-1 text-gray-600 ">آدرس</label>
             <input
               name="address"
               value={userInfo.address}
               onChange={handleChange}
-              className="w-full mb-3 p-2 border border-gray-100 rounded-md outline-none bg-gray-50"
+              className={`w-full mb-2 p-2 border ${errors.address ? "border-red-700" : " border-gray-100 "} rounded-md outline-none bg-gray-50`}
               type="text"
               placeholder=" آدرس"
             />
+            {errors.address && (
+              <p className="text-red-700 mb-2">{errors.address}</p>
+            )}
+
             <label className="block mb-1 text-gray-600 ">کد پستی</label>
             <input
               name="postalCode"
               value={userInfo.postalCode}
               onChange={handleChange}
-              className="w-full mb-3 p-2 border border-gray-100 rounded-md outline-none bg-gray-50"
-              type="number"
+              className={`w-full mb-2 p-2 border ${errors.postalCode ? "border-red-700" : " border-gray-100 "} rounded-md outline-none bg-gray-50`}
+              type="text"
               placeholder=" کد پستی"
             />
+            {errors.postalCode && (
+              <p className="text-red-700 mb-2">{errors.postalCode}</p>
+            )}
 
             <button
               className="cursor-pointer w-fit mx-auto my-5 py-3 px-10 bg-black text-white font-bold rounded-md  "
