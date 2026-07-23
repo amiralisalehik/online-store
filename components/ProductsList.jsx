@@ -5,7 +5,7 @@ export default function ProductsList({ products }) {
     return <p className="text-center py-10">محصولی یافت نشد.</p>;
   }
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 px-[50px] py-[20px] ">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4  pt-[20px] pb-[80px] ">
       {products.map((product) => (
         <ProductsBox key={product._id} product={product} />
       ))}

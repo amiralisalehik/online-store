@@ -11,7 +11,7 @@ export default async function LatestProducts({ category }) {
   const products = await res.json();
 
   return (
-    <div className="px-[10px] md:px-[90px]">
+    <div className="px-[10px] md:px-[140px]">
       <ProductsList products={products} />
     </div>
   );

@@ -1,5 +1,5 @@
 import { connectToDatabase } from "@/lib/mongodb";
-import product from "@/models/product";
+import Product from "@/models/product";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
@@ -11,9 +11,9 @@ export async function GET(request) {
     let products;
 
     if (category) {
-      products = await product.find({ category });
+      products = await Product.find({ category });
     } else {
-      products = await product.find({});
+      products = await Product.find({});
     }
 
     return NextResponse.json(products, { status: 200 });
