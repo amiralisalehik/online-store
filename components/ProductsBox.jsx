@@ -12,7 +12,7 @@ export default function ProductsBox({ product }) {
       {/* image product */}
       <div className="flex justify-center items-center h-40 ">
         <Link href={`/products/${product._id}`}>
-          <Image
+          <img
             className="w-full max-w-[180px] rounded-lg  "
             alt={product.title}
             src={product.image}

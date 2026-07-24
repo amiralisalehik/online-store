@@ -164,18 +164,18 @@ export default function Cart() {
                   </td>
                   <td className=" text-center">
                     <button onClick={() => removeFromCart(product._id)}>
-                      <FiTrash2 size={20}></FiTrash2>
+                      <FiTrash2 className="cursor-pointer" size={20}></FiTrash2>
                     </button>
                   </td>
-                  <td className="py-2  pr-3  flex items-center justify-between">
+                  <td className="py-2  pr-3  flex items-center justify-around">
                     <p>{product.title}</p>
-                    <Image
-                      className="rounded-md h-14 object-cover"
+                    <img
+                      className="rounded-md h-20 w-20 object-cover"
                       src={product.image}
                       height={150}
                       width={150}
                       alt={product.title}
-                    ></Image>
+                    />
                   </td>
 
                   <td className="p-3">
@@ -198,7 +198,7 @@ export default function Cart() {
           </table>
         </div>
 
-        <div className="md:w-2/5  bg-white  p-5  shadow-[-4px_-2px_10px_rgba(0,0,0,0.15)] rounded-lg ">
+        <div className="md:w-2/5 max-h-fit  bg-white  p-5  shadow-[-4px_-2px_10px_rgba(0,0,0,0.15)] rounded-lg ">
           <h1 className="text-md mb-4 font-bold object-cover">اطلاعات شما</h1>
           <form onSubmit={handleSubmit} className="text-xs flex flex-col">
             <label className="block mb-1 text-gray-600 ">
