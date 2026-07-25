@@ -2,6 +2,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import Header from "@/components/Header";
 import { CartProvider } from "@/context/CartContext";
+import Footer from "@/components/Footer";
 
 const iransans = localFont({
   src: [
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
         <CartProvider>
           <Header></Header>
           {children}
+          <Footer></Footer>
         </CartProvider>
       </body>
     </html>
