@@ -25,7 +25,7 @@ export default async function ProductsDetails({ params }) {
           </Link>
         </span>
 
-        <p className="text-sm">{mainProduct.desc}</p>
+        <p className="text-sm text-justify leading-6">{mainProduct.desc}</p>
         <p className="text-base font-semibold">
           {" "}
           قیمت: {mainProduct.price.toLocaleString("fa-IR")} تومان

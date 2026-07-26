@@ -1,6 +1,5 @@
 "use client";
 import { CartContext } from "@/context/CartContext";
-import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 
@@ -22,7 +21,7 @@ export default function ProductsBox({ product }) {
         </Link>
       </div>
       {/* product detils */}
-      <div className="flex flex-col gap-3 ">
+      <div className="flex flex-col gap-3 mt-3">
         <Link href={`/products/${product._id}`}>
           <h1 className="text-sm font-bold">{product.title}</h1>
         </Link>

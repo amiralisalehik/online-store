@@ -7,14 +7,20 @@ export async function GET(request) {
   const query = searchParams.get("q");
 
   if (!query || query.trim() === "") {
-    return NextResponse.json({ prodoct: [] });
+    return NextResponse.json({ product: [] });
   }
 
-  await connectToDatabase();
+  try {
+    await connectToDatabase();
 
-  const product = await Product.find({
-    title: { $regex: query, $options: "i" },
-  }).limit(5);
+    const product = await Product.find({
+      title: { $regex: query, $options: "i" },
+    }).limit(5);
 
-  return NextResponse.json({ product });
+    return NextResponse.json({ product });
+  } catch (error) {
+    console.error("API ERROR:", error.message);
+
+    return NextResponse.json({ error: error }, { status: 500 });
+  }
 }

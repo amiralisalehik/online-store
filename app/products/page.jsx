@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import LatestProducts from "@/components/LatestProducts";
 import SearchBar from "@/components/SearchBar";
 

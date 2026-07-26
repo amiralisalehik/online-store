@@ -41,7 +41,7 @@ export default function SearchBar() {
       ></input>
 
       {showResult && result.length > 0 && (
-        <ul className="absolute left-[10] right-[10]  md:left-[140] md:right-[140] top-full bg-gray-100  rounded border border-gray-400">
+        <ul className="absolute left-[10] right-[10]  md:left-[140] md:right-[140] top-full bg-gray-200  rounded border border-gray-400">
           {result.map((product) => (
             <li
               className="order-b border-gray-100 last:border-0"
